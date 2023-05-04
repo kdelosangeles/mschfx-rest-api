@@ -1,0 +1,19 @@
+service: mschf-rest-api
+frameworkVersion: "3"
+
+provider:
+    name: aws
+    runtime: go1.x
+
+package:
+    patterns:
+        - "!./**"
+        - ./bin/**
+
+functions:
+    getProducts:
+        handler: bin/getProducts
+        events:
+            - httpApi:
+                  path: /getProducts
+                  method: get
